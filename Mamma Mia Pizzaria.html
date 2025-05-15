@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mamma Mia Pizzaria</title>
+    <link rel="stylesheet" href="Mamma Mia Pizzaria.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .secao { display: none; }
+        .secao.ativa { display: block; }
+    </style>
+</head>
+<body>
+    <!-- Tela de Login -->
+    <div id="tela-login" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh;">
+        <h1 style="margin-bottom: 20px;">MAMMA MIA PIZZARIA</h1>
+        <h2>Login</h2>
+        <input type="text" id="login-usuario" placeholder="Usuário" style="margin-bottom: 10px;">
+        <input type="password" id="login-senha" placeholder="Senha" style="margin-bottom: 10px;">
+        <button onclick="fazerLogin()">Entrar</button>
+        <span style="margin-top: 10px;">Não tem cadastro? <a href="#" onclick="mostrarCadastro()">Cadastrar</a></span>
+        <div id="login-erro" style="color: red; margin-top: 10px;"></div>
+    </div>
+
+    <!-- Conteúdo do site (header, menu, main) -->
+    <div id="conteudo-site" style="display: none;">
+        <header>
+            <h1>MAMMA MIA PIZZARIA</h1>
+            <div class="Home">
+                <button onclick="mostrarSecao('Home')">
+                    <i class="fa-solid fa-house"></i> Home
+                </button>
+                <button onclick="mostrarSecao('cardapio')">
+                    <i class="fa-solid fa-pizza-slice"></i> Cardápio
+                </button>
+                <button onclick="mostrarSecao('pedido')">
+                    <i class="fa-solid fa-cart-shopping"></i> Pedido
+                </button>
+                <button onclick="mostrarSecao('entrega')">
+                    <i class="fa-solid fa-motorcycle"></i> Entrega
+                </button>
+                <button onclick="mostrarSecao('sobre-nos')">
+                    <i class="fa-solid fa-phone"></i> Sobre Nós
+                </button>
+            </div>
+        </header>
+        <main>
+            <section id="Home" class="secao ativa">
+                <h2>Mamma Mia Pizzaria !!</h2>
+                <p>
+                    Bem-vindo à <strong>Mamma mia Pizzaria</strong>! Aqui voce sentira o gostinho da Grecia!
+                </p>
+                <p>
+                    <strong>Entre em contato:</strong><br>
+                    WhatsApp: <a href="https://wa.me/1990028922" target="_blank">(19) 9002-8922</a><br>
+                    E-mail: <a href="mailto:contato@miaupizzaria.com">contato@mammamiapizzaria.com</a><br>
+                    Instagram: <a href="https://instagram.com/miaupizzaria" target="_blank">@MammaMia_Pizzaria</a>
+                </p>
+                <p>
+                    <strong>Horário de Funcionamento:</strong><br>
+                    Segunda a Sexta: 18h - 23h<br>
+                    Sábado e Domingo: 12h - 23h
+                </p>
+            </section>
+            <section id="cardapio" class="secao">
+                <h2>Pizzas Salgadas</h2>
+                <div class="pizzas">
+                    <div class="produto">
+                        <h3>Pizza Margherita</h3>
+                        <label>Quantidade:
+                            <input type="number" min="1" value="1" class="quantidade">
+                        </label>
+                        <select class="tamanho" onchange="atualizarPreco(this)">
+                            <option value="P">Pequena</option>
+                            <option value="M">Média</option>
+                            <option value="G">Grande</option>
+                        </select>
+                        <div class="preco-atual"></div>
+                        <button onclick="adicionarCarrinho(this)">Adicionar</button>
+                    </div>
+                    <div class="produto">
+                        <h3>Pizza Pepperoni</h3>
+                        <label>Quantidade:
+                            <input type="number" min="1" value="1" class="quantidade">
+                        </label>
+                        <select class="tamanho" onchange="atualizarPreco(this)">
+                            <option value="P">Pequena</option>
+                            <option value="M">Média</option>
+                            <option value="G">Grande</option>
+                        </select>
+                        <div class="preco-atual"></div>
+                        <button onclick="adicionarCarrinho(this)">Adicionar</button>
+                    </div>
+                    <div class="produto">
+                        <h3>Pizza Quatro Queijos</h3>
+                        <label>Quantidade:
+                            <input type="number" min="1" value="1" class="quantidade">
+                        </label>
+                        <select class="tamanho" onchange="atualizarPreco(this)">
+                            <option value="P">Pequena</option>
+                            <option value="M">Média</option>
+                            <option value="G">Grande</option>
+                        </select>
+                        <div class="preco-atual"></div>
+                        <button onclick="adicionarCarrinho(this)">Adicionar</button>
+                    </div>
+                    <div class="produto">
+                        <h3>Pizza Vegetariana</h3>
+                        <label>Quantidade:
+                            <input type="number" min="1" value="1" class="quantidade">
+                        </label>
+                        <select class="tamanho" onchange="atualizarPreco(this)">
+                            <option value="P">Pequena</option>
+                            <option value="M">Média</option>
+                            <option value="G">Grande</option>
+                        </select>
+                        <div class="preco-atual"></div>
+                        <button onclick="adicionarCarrinho(this)">Adicionar</button>
+                    </div>
+                    <div class="produto">
+                        <h3>Pizza Frango com Catupiry</h3>
+                        <label>Quantidade:
+                            <input type="number" min="1" value="1" class="quantidade">
+                        </label>
+                        <select class="tamanho" onchange="atualizarPreco(this)">
+                            <option value="P">Pequena</option>
+                            <option value="M">Média</option>
+                            <option value="G">Grande</option>
+                        </select>
+                        <div class="preco-atual"></div>
+                        <button onclick="adicionarCarrinho(this)">Adicionar</button>
+                    </div>
+                    <div class="produto">
+                        <h3>Pizza Portuguesa</h3>
+                        <label>Quantidade:
+                            <input type="number" min="1" value="1" class="quantidade">
+                        </label>
+                        <select class="tamanho" onchange="atualizarPreco(this)">
+                            <option value="P">Pequena</option>
+                            <option value="M">Média</option>
+                            <option value="G">Grande</option>
+                        </select>
+                        <div class="preco-atual"></div>
+                        <button onclick="adicionarCarrinho(this)">Adicionar</button>
+                    </div>
+                </div>
+                <h2>Pizzas Doces</h2>
+                <div class="pizzas">
+                    <div class="produto">
+                        <h3>Pizza de Nutella</h3>
+                        <label>Quantidade:
+                            <input type="number" min="1" value="1" class="quantidade">
+                        </label>
+                        <select class="tamanho" onchange="atualizarPreco(this)">
+                            <option value="P">Pequena</option>
+                            <option value="M">Média</option>
+                            <option value="G">Grande</option>
+                        </select>
+                        <div class="preco-atual"></div>
+                        <button onclick="adicionarCarrinho(this)">Adicionar</button>
+                    </div>
+                    <div class="produto">
+                        <h3>Pizza de Banana com Canela</h3>
+                        <label>Quantidade:
+                            <input type="number" min="1" value="1" class="quantidade">
+                        </label>
+                        <select class="tamanho" onchange="atualizarPreco(this)">
+                            <option value="P">Pequena</option>
+                            <option value="M">Média</option>
+                            <option value="G">Grande</option>
+                        </select>
+                        <div class="preco-atual"></div>
+                        <button onclick="adicionarCarrinho(this)">Adicionar</button>
+                    </div>
+                    <div class="produto">
+                        <h3>Pizza de Morango com Chocolate</h3>
+                        <label>Quantidade:
+                            <input type="number" min="1" value="1" class="quantidade">
+                        </label>
+                        <select class="tamanho" onchange="atualizarPreco(this)">
+                            <option value="P">Pequena</option>
+                            <option value="M">Média</option>
+                            <option value="G">Grande</option>
+                        </select>
+                        <div class="preco-atual"></div>
+                        <button onclick="adicionarCarrinho(this)">Adicionar</button>
+                    </div>
+                    <div class="produto">
+                        <h3>Pizza de Abacaxi com Canela</h3>
+                        <label>Quantidade:
+                            <input type="number" min="1" value="1" class="quantidade">
+                        </label>
+                        <select class="tamanho" onchange="atualizarPreco(this)">
+                            <option value="P">Pequena</option>
+                            <option value="M">Média</option>
+                            <option value="G">Grande</option>
+                        </select>
+                        <div class="preco-atual"></div>
+                        <button onclick="adicionarCarrinho(this)">Adicionar</button>
+                    </div>
+                    <div class="produto">
+                        <h3>Pizza de Chocolate com Morango</h3>
+                        <label>Quantidade:
+                            <input type="number" min="1" value="1" class="quantidade">
+                        </label>
+                        <select class="tamanho" onchange="atualizarPreco(this)">
+                            <option value="P">Pequena</option>
+                            <option value="M">Média</option>
+                            <option value="G">Grande</option>
+                        </select>
+                        <div class="preco-atual"></div>
+                        <button onclick="adicionarCarrinho(this)">Adicionar</button>
+                    </div>
+                    <div class="produto">
+                        <h3>Pizza de Doce de Leite com Coco</h3>
+                        <label>Quantidade:
+                            <input type="number" min="1" value="1" class="quantidade">
+                        </label>
+                        <select class="tamanho" onchange="atualizarPreco(this)">
+                            <option value="P">Pequena</option>
+                            <option value="M">Média</option>
+                            <option value="G">Grande</option>
+                        </select>
+                        <div class="preco-atual"></div>
+                        <button onclick="adicionarCarrinho(this)">Adicionar</button>
+                    </div>
+                </div>
+            </section>
+            <section id="pedido" class="secao">
+                <h2>Pedido</h2>
+                <p>Área para fazer pedidos.</p>
+            </section>
+            <section id="entrega" class="secao">
+                <h2>Entrega</h2>
+                <p>Informações sobre entrega.</p>
+            </section>
+            <section id="sobre-nos" class="secao">
+                <h2>Sobre Nós</h2>
+                <p>Informações sobre a pizzaria.</p>
+            </section>
+        </main>
+    </div>
+
+    <script src="Mamma Mia Pizzaria.js"></script>
+    <script>
+    function fazerLogin() {
+        const usuario = document.getElementById('login-usuario').value;
+        const senha = document.getElementById('login-senha').value;
+        const erro = document.getElementById('login-erro');
+        if (usuario && senha) {
+            document.getElementById('tela-login').style.display = 'none';
+            document.getElementById('conteudo-site').style.display = '';
+        } else {
+            erro.textContent = 'Preencha usuário e senha!';
+        }
+    }
+    function mostrarCadastro() {
+        alert('Tela de cadastro ainda não implementada.');
+    }
+    window.onload = function() {
+        document.getElementById('tela-login').style.display = 'flex';
+        document.getElementById('conteudo-site').style.display = 'none';
+    };
+    </script>
+</body>
+</html>

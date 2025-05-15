@@ -1,0 +1,60 @@
+:root {
+    --vermelho-pastel: #a2d3ff;
+    
+}
+
+body {
+    font-family: Baskerville, serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+.pizzas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+.produto {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    width: 200px;
+    box-sizing: border-box;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.produto h3 {
+    margin-top: 0;
+}
+.preco-atual {
+    margin: 8px 0;
+    font-weight: bold;
+    color: #000000;
+}
+header {
+    background: var(--vermelho-pastel);
+    color: rgb(255, 255, 255);
+    padding: 24px 0 16px 0;
+    text-align: center;
+    position: relative;
+}
+.pizzas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.produto {
+    border: 1px solid #D27B89;
+    border-radius: 8px;
+    padding: 16px;
+    width: 220px;
+    box-sizing: border-box;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
