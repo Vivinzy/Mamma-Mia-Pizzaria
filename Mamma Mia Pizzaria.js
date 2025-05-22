@@ -1,7 +1,3 @@
-// Mamma Mia Pizzaria - JavaScript
-
-
-
 const precos = {
     'Pizza Margherita': { P: 30, M: 40, G: 50 },
     'Pizza Pepperoni': { P: 32, M: 42, G: 52 },
@@ -66,23 +62,89 @@ function atualizarPreco(select) {
     }
 }
 
-// Atualiza todos os preços ao carregar a página
+// Atualiza todos os preços ao carregar a página e adiciona eventos aos botões
 window.onload = () => {
     document.querySelectorAll('.produto .tamanho').forEach(select => atualizarPreco(select));
+    document.querySelectorAll('.adicionar-carrinho').forEach(botao => {
+        botao.addEventListener('click', () => adicionarCarrinho(botao));
+    });
 };
-//tela de login
-function login() {
+
+// Função de login correta
+function fazerLogin() {
     const usuario = document.getElementById('usuario').value;
     const senha = document.getElementById('senha').value;
+    const mensagem = document.getElementById('mensagem');
 
     if (usuario === 'admin' && senha === 'admin') {
-        alert('Login bem-sucedido!');
-        mostrarSecao('secao-pedidos');
+        mensagem.textContent = "Login realizado com sucesso!";
+        mensagem.className = "mensagem sucesso";
+        mensagem.classList.remove("hidden");
+        setTimeout(() => {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('conteudo-site').style.display = '';
+            mensagem.classList.add("hidden");
+        }, 1000);
     } else {
-        alert('Usuário ou senha incorretos.');
+        mensagem.textContent = "Usuário ou senha incorretos!";
+        mensagem.className = "mensagem erro";
+        mensagem.classList.remove("hidden");
+        setTimeout(() => {
+            mensagem.classList.add("hidden");
+        }, 3000);
     }
 }
-// Adiciona eventos aos botões de adicionar ao carrinho
-document.querySelectorAll('.adicionar-carrinho').forEach(botao => {
-    botao.addEventListener('click', () => adicionarCarrinho(botao));
-});
+
+// Função para mostrar tela de cadastro (não implementada)
+function mostrarCadastro() {
+    alert('Tela de cadastro ainda não implementada.');
+}
+function adicionarCarrinho(botao) {
+    const produtoDiv = botao.closest('.produto');
+    const nomeProduto = produtoDiv.querySelector('h3').textContent.trim();
+    const tamanhoSelect = produtoDiv.querySelector('.tamanho');
+    const tamanho = tamanhoSelect ? tamanhoSelect.value : '';
+    const quantidadeInput = produtoDiv.querySelector('.quantidade');
+    const quantidade = quantidadeInput ? parseInt(quantidadeInput.value) : 1;
+    let preco = precos[nomeProduto];
+    if (typeof preco === 'object') {
+        preco = preco[tamanho];
+    }
+    let existente = carrinho.find(i => i.produto === nomeProduto && i.tamanho === tamanho);
+    if (existente) {
+        existente.quantidade += quantidade;
+    } else {
+        carrinho.push({ produto: nomeProduto, tamanho, quantidade, preco });
+    }
+ atualizarCarrinho();
+}
+function atualizarCarrinho() {
+    // Exibe no console (opcional)
+    console.clear();
+    console.log("Carrinho:", carrinho);
+
+    // Exibe na tela
+    const lista = document.getElementById('lista-pedidos');
+    if (!lista) return;
+
+    if (carrinho.length === 0) {
+        lista.innerHTML = "<p>Nenhum pedido adicionado ainda.</p>";
+        return;
+    }
+
+    let html = "<ul>";
+    carrinho.forEach(item => {
+        html += `<li>${item.quantidade}x ${item.produto} (${item.tamanho}) - R$ ${item.preco.toFixed(2)} cada</li>`;
+    });
+    html += "</ul>";
+    lista.innerHTML = html;
+}
+function finalizarPedido() {
+    if (carrinho.length === 0) {
+        alert("Nenhum pedido para finalizar!");
+        return;
+    }
+    alert("Pedido finalizado com sucesso!\nObrigado por comprar na Mamma Mia Pizzaria!");
+    carrinho = [];
+    atualizarCarrinho();
+}
