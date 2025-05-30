@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mamma Mia Pizzaria</title>
     <link rel="stylesheet" href="Mamma Mia Pizzaria.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         .secao { display: none; }
         .secao.ativa { display: block; }
     </style>
 </head>
 <body>
+    <!--Login-->
     <div id="login">
         <div class="container">
             <h1>Bem vindo à Mamma Mia Pizzaria</h1>
@@ -27,425 +27,165 @@
             <p id="mensagem" class="mensagem hidden"></p>
         </div>
     </div>
-
-    <div id="conteudo-site" style="display: none;">
-        <header>
-            <h1>MAMMA MIA PIZZARIA</h1>
-            <div class="Home">
-                <button onclick="mostrarSecao('Home')">
-                    <i class="fa-solid fa-house"></i> Home
-                </button>
-                <button onclick="mostrarSecao('cardapio')">
-                    <i class="fa-solid fa-pizza-slice"></i> Cardápio
-                </button>
-                <button onclick="mostrarSecao('pedido')">
-                    <i class="fa-solid fa-cart-shopping"></i> Pedido
-                </button>
-                <button onclick="mostrarSecao('entrega')">
-                    <i class="fa-solid fa-motorcycle"></i> Entrega
-                </button>
-                <button onclick="mostrarSecao('sobre-nos')">
-                    <i class="fa-solid fa-phone"></i> Sobre Nós
-                </button>
-            </div>
-        </header>
-        <main>
-            <section id="Home" class="secao ativa">
-                <h2>Mamma Mia Pizzaria !!</h2>
-                <p>
-                    Bem-vindo à <strong>Mamma mia Pizzaria</strong>! Aqui você sentirá o gostinho da Grécia!
-                </p>
-                <p>
-                    <strong>Entre em contato:</strong><br>
-                    WhatsApp: <a href="https://wa.me/1990028922" target="_blank">(19) 9002-8922</a><br>
-                    E-mail: <a href="mailto:contato@miaupizzaria.com">contato@mammamiapizzaria.com</a><br>
-                    Instagram: <a href="https://instagram.com/miaupizzaria" target="_blank">@MammaMia_Pizzaria</a>
-                </p>
-                <p>
-                    <strong>Horário de Funcionamento:</strong><br>
-                    Segunda a Sexta: 18h - 23h<br>
-                    Sábado e Domingo: 12h - 23h
-                </p>
-            </section>
-            <section id="cardapio" class="secao">
-                <h2>Pizzas Salgadas</h2>
-                <div class="pizzas">
-                    <div class="produto">
-                        <h3>Pizza Margherita</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Pizza Pepperoni</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Pizza Quatro Queijos</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Pizza Vegetariana</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Pizza Frango com Catupiry</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Pizza Portuguesa</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Pizza Calabresa</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                </div>
-                    <div class="produto">
-                        <h3>Pizza de Strognoff</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Pizza de Camarão</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Pizza de 4 queijos</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                <h2>Pizzas Doces</h2>
-                <div class="pizzas">
-                    <div class="produto">
-                        <h3>Pizza de Nutella</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Pizza de Banana com Canela</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Pizza de M&M</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Pizza de Abacaxi com Canela</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Pizza de Chocolate com Morango</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Pizza de Doce de Leite com Coco</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Pizza de Leite Condensado com Morango</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                </div>
-                    <div class="produto">
-                        <h3>Pizza de Morango com Chocolate Branco</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Pizza de Chocolate com Morango e Leite Condensado</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Pizza de Chocolate com Morango e Coco</h3>
-                        <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <select class="tamanho" onchange="atualizarPreco(this)">
-                            <option value="P">Pequena</option>
-                            <option value="M">Média</option>
-                            <option value="G">Grande</option>
-                        </select>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <h2 id="titulo-bebidas">Bebidas</h2>
-                    <div class="produto">
-                        <h3>Refrigerante 350ml</h3>
-                          <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <label>Sabor:
-                            <select class="sabor">
-                                <option value="Coca-Cola">Coca-Cola</option>
-                                <option value="Guaraná">Guaraná</option>
-                                <option value="Fanta">Fanta</option>
-                                <option value="Sprite">Sprite</option>
-                            </select>
-                        </label>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Refrigerante 600ml</h3>
-                      <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <label>Sabor:
-                            <select class="sabor">
-                                <option value="Coca-Cola">Coca-Cola</option>
-                                <option value="Guaraná">Guaraná</option>
-                                <option value="Fanta">Fanta</option>
-                                <option value="Sprite">Sprite</option>
-                            </select>
-                        </label>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Refrigerante 1L</h3>
-                          <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <label>Sabor:
-                            <select class="sabor">
-                                <option value="Coca-Cola">Coca-Cola</option>
-                                <option value="Guaraná">Guaraná</option>
-                                <option value="Fanta">Fanta</option>
-                                <option value="Sprite">Sprite</option>
-                            </select>
-                        </label>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Suco Natural 350ml</h3>
-                           <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                     <label>Sabor:
-                            <select class="sabor">
-                                <option value="Laranja">Laranja</option>
-                                <option value="Maracuja">Maracuja</option>
-                                <option value="Limão">Limão</option>
-                                <option value="Abacaxi com Hortelã">Abacaxi com Hortelã</option>
-                            </select>
-                        </label>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Suco Natural 600ml</h3>
-                           <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                      <label>Sabor:
-                            <select class="sabor">
-                                <option value="Laranja">Laranja</option>
-                                <option value="Maracuja">Maracuja</option>
-                                <option value="Limão">Limão</option>
-                                <option value="Abacaxi com Hortelã">Abacaxi com Hortelã</option>
-                            </select>
-                        </label>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                    <div class="produto">
-                        <h3>Suco Natural 1L</h3>
-                          <label>Quantidade:
-                            <input type="number" min="1" value="1" class="quantidade">
-                        </label>
-                        <label>Sabor:
-                            <select class="sabor">
-                                <option value="Laranja">Laranja</option>
-                                <option value="Maracuja">Maracuja</option>
-                                <option value="Limão">Limão</option>
-                                <option value="Abacaxi com Hortelã">Abacaxi com Hortelã</option>
-                            </select>
-                        </label>
-                        <div class="preco-atual"></div>
-                        <button class="adicionar-carrinho">Adicionar</button>
-                    </div>
-                </section>
-<section id="pedido" class="secao">
-    <h2>Pedido</h2>
-    <div id="lista-pedidos"></div>
-    <button id="finalizar-pedido" onclick="finalizarPedido()">Finalizar Pedido</button>
-</section>
-            <section id="entrega" class="secao">
-                <h2>Entrega</h2>
-                <p>Informações sobre entrega.</p>
-            </section>
-            <section id="sobre-nos" class="secao">
-                <h2>Sobre Nós</h2>
-                <p>Informações sobre a pizzaria.</p>
-            </section>
-        </main>
+ <nav class="menu">
+    <button onclick="alert('Consulta ainda não implementada')">Consulta</button>
+    <button onclick="alert('Cadastro ainda não implementado')">Cadastro</button>
+    <button onclick="mostrarRelatorio()">Relatório</button>
+    <button onclick="mostrarSabores()">Sabores de Pizza</button>
+</nav>
+    <!-- Tela de perfil do admin -->
+<div id="perfil-admin" style="display:none;">
+    <div class="container">
+        <h2>Perfil do Funcionário</h2>
+        <p><strong>Nome:</strong> Administrador do Sistema</p>
+        <p><strong>Cargo:</strong> Gerente</p>
+        <button onclick="mostrarPedidos()">Ir para Pedidos</button>
     </div>
+</div>
 
+    <main id="conteudo-site">
+        <section id="pedido" class="secao ativa">
+        <h2 id="titulo-pedido">Pedido</h2>
+            <div class="pizzas">
+                <div class="produto">
+                    <h3>Pizza Margherita</h3>
+                    <select class="tamanho" onchange="atualizarPreco(this)">
+                        <option value="P">Pequena</option>
+                        <option value="M">Média</option>
+                        <option value="G">Grande</option>
+                    </select>
+                    <div class="preco-atual"></div>
+                    <input type="number" class="quantidade" value="1" min="1" style="width:60px; margin:8px 0;">
+                    <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+                </div>
+                <div class="produto">
+                    <h3>Pizza Pepperoni</h3>
+                    <select class="tamanho" onchange="atualizarPreco(this)">
+                        <option value="P">Pequena</option>
+                        <option value="M">Média</option>
+                        <option value="G">Grande</option>
+                    </select>
+                    <div class="preco-atual"></div>
+                    <input type="number" class="quantidade" value="1" min="1" style="width:60px; margin:8px 0;">
+                    <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+                </div>
+                <div class="produto">
+                    <h3>Pizza Quatro Queijos</h3>
+                    <select class="tamanho" onchange="atualizarPreco(this)">
+                        <option value="P">Pequena</option>
+                        <option value="M">Média</option>
+                        <option value="G">Grande</option>
+                    </select>
+                    <div class="preco-atual"></div>
+                    <input type="number" class="quantidade" value="1" min="1" style="width:60px; margin:8px 0;">
+                    <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+                </div>
+                <div class="produto">
+                    <h3>Pizza Vegetariana</h3>
+                    <select class="tamanho" onchange="atualizarPreco(this)">
+                        <option value="P">Pequena</option>
+                        <option value="M">Média</option>
+                        <option value="G">Grande</option>
+                    </select>
+                    <div class="preco-atual"></div>
+                    <input type="number" class="quantidade" value="1" min="1" style="width:60px; margin:8px 0;">
+                    <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+                </div>
+                <div class="produto">
+                    <h3>Pizza Frango com Catupiry</h3>
+                    <select class="tamanho" onchange="atualizarPreco(this)">
+                        <option value="P">Pequena</option>
+                        <option value="M">Média</option>
+                        <option value="G">Grande</option>
+                    </select>
+                    <div class="preco-atual"></div>
+                    <input type="number" class="quantidade" value="1" min="1" style="width:60px; margin:8px 0;">
+                    <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+                </div>
+                <div class="produto">
+                    <h3>Pizza Portuguesa</h3>
+                    <select class="tamanho" onchange="atualizarPreco(this)">
+                        <option value="P">Pequena</option>
+                        <option value="M">Média</option>
+                        <option value="G">Grande</option>
+                    </select>
+                    <div class="preco-atual"></div>
+                    <input type="number" class="quantidade" value="1" min="1" style="width:60px; margin:8px 0;">
+                    <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+                </div>
+                <div class="produto">
+                    <h3>Pizza de Nutella</h3>
+                    <select class="tamanho" onchange="atualizarPreco(this)">
+                        <option value="P">Pequena</option>
+                        <option value="M">Média</option>
+                        <option value="G">Grande</option>
+                    </select>
+                    <div class="preco-atual"></div>
+                    <input type="number" class="quantidade" value="1" min="1" style="width:60px; margin:8px 0;">
+                    <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+                </div>
+                <div class="produto">
+                    <h3>Pizza de Banana com Canela</h3>
+                    <select class="tamanho" onchange="atualizarPreco(this)">
+                        <option value="P">Pequena</option>
+                        <option value="M">Média</option>
+                        <option value="G">Grande</option>
+                    </select>
+                    <div class="preco-atual"></div>
+                    <input type="number" class="quantidade" value="1" min="1" style="width:60px; margin:8px 0;">
+                    <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+                </div>
+                <div class="produto">
+                    <h3>Pizza de Morango com Chocolate</h3>
+                    <select class="tamanho" onchange="atualizarPreco(this)">
+                        <option value="P">Pequena</option>
+                        <option value="M">Média</option>
+                        <option value="G">Grande</option>
+                    </select>
+                    <div class="preco-atual"></div>
+                    <input type="number" class="quantidade" value="1" min="1" style="width:60px; margin:8px 0;">
+                    <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+                </div>
+                <div class="produto">
+                    <h3>Pizza de Abacaxi com Canela</h3>
+                    <select class="tamanho" onchange="atualizarPreco(this)">
+                        <option value="P">Pequena</option>
+                        <option value="M">Média</option>
+                        <option value="G">Grande</option>
+                    </select>
+                    <div class="preco-atual"></div>
+                    <input type="number" class="quantidade" value="1" min="1" style="width:60px; margin:8px 0;">
+                    <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+                </div>
+                <div class="produto">
+                    <h3>Pizza de Chocolate com Morango</h3>
+                    <select class="tamanho" onchange="atualizarPreco(this)">
+                        <option value="P">Pequena</option>
+                        <option value="M">Média</option>
+                        <option value="G">Grande</option>
+                    </select>
+                    <div class="preco-atual"></div>
+                    <input type="number" class="quantidade" value="1" min="1" style="width:60px; margin:8px 0;">
+                    <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+                </div>
+                <div class="produto">
+                    <h3>Pizza de Doce de Leite com Coco</h3>
+                    <select class="tamanho" onchange="atualizarPreco(this)">
+                        <option value="P">Pequena</option>
+                        <option value="M">Média</option>
+                        <option value="G">Grande</option>
+                    </select>
+                    <div class="preco-atual"></div>
+                    <input type="number" class="quantidade" value="1" min="1" style="width:60px; margin:8px 0;">
+                    <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+            <h3>Pedido</h3>
+            <div id="lista-pedidos"></div>
+            <button id="limpar-pedido" onclick="limparPedido()">Limpar Pedido</button>
+            <button id="finalizar-pedido" onclick="finalizarPedido()">Finalizar Pedido</button>
+        </section>
+    </main>
     <script src="Mamma Mia Pizzaria.js"></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+// Preços das pizzas
 const precos = {
     'Pizza Margherita': { P: 30, M: 40, G: 50 },
     'Pizza Pepperoni': { P: 32, M: 42, G: 52 },
@@ -14,13 +15,6 @@ const precos = {
 };
 
 let carrinho = [];
-
-// Alterna as seções do site
-function mostrarSecao(secaoId) {
-    document.querySelectorAll('.secao').forEach(sec => sec.classList.remove('ativa'));
-    const secao = document.getElementById(secaoId);
-    if (secao) secao.classList.add('ativa');
-}
 
 // Adiciona pizza ao carrinho
 function adicionarCarrinho(botao) {
@@ -43,10 +37,31 @@ function adicionarCarrinho(botao) {
     atualizarCarrinho();
 }
 
-// Atualiza o carrinho (exemplo: só loga no console)
+// Atualiza o carrinho na tela
 function atualizarCarrinho() {
-    console.clear();
-    console.log("Carrinho:", carrinho);
+    const lista = document.getElementById('lista-pedidos');
+    if (!lista) return;
+
+    if (carrinho.length === 0) {
+        lista.innerHTML = "<p>Nenhum pedido adicionado ainda.</p>";
+        return;
+    }
+
+    let html = "<ul>";
+    carrinho.forEach((item, idx) => {
+        html += `<li>
+            ${item.quantidade}x ${item.produto} (${item.tamanho}) - R$ ${item.preco.toFixed(2)} cada
+            <button onclick="removerItemCarrinho(${idx})" style="margin-left:10px; color:red;">Remover</button>
+        </li>`;
+    });
+    html += "</ul>";
+    lista.innerHTML = html;
+}
+
+// Remove item do carrinho
+function removerItemCarrinho(index) {
+    carrinho.splice(index, 1);
+    atualizarCarrinho();
 }
 
 // Atualiza o preço exibido ao trocar o tamanho
@@ -62,27 +77,44 @@ function atualizarPreco(select) {
     }
 }
 
-// Atualiza todos os preços ao carregar a página e adiciona eventos aos botões
-window.onload = () => {
-    document.querySelectorAll('.produto .tamanho').forEach(select => atualizarPreco(select));
-    document.querySelectorAll('.adicionar-carrinho').forEach(botao => {
-        botao.addEventListener('click', () => adicionarCarrinho(botao));
+// Finaliza o pedido
+function finalizarPedido() {
+    if (carrinho.length === 0) {
+        alert("Nenhum pedido para finalizar!");
+        return;
+    }
+    let resumo = "Resumo do pedido:\n";
+    let total = 0;
+    carrinho.forEach(item => {
+        resumo += `${item.quantidade}x ${item.produto} (${item.tamanho}) - R$ ${(item.preco * item.quantidade).toFixed(2)}\n`;
+        total += item.preco * item.quantidade;
     });
-};
+    resumo += `\nTotal: R$ ${total.toFixed(2)}\n\nPedido finalizado com sucesso!\nObrigado por comprar na Mamma Mia Pizzaria!`;
+    alert(resumo);
+    carrinho = [];
+    atualizarCarrinho();
+}
 
-// Função de login correta
+// Limpa o pedido
+function limparPedido() {
+    carrinho = [];
+    atualizarCarrinho();
+}
+
+// ...existing code...
+
 function fazerLogin() {
     const usuario = document.getElementById('usuario').value;
     const senha = document.getElementById('senha').value;
     const mensagem = document.getElementById('mensagem');
 
-    if (usuario === 'admin' && senha === 'admin') {
+    if (usuario === 'admin' && senha === '1234') {
         mensagem.textContent = "Login realizado com sucesso!";
         mensagem.className = "mensagem sucesso";
         mensagem.classList.remove("hidden");
         setTimeout(() => {
             document.getElementById('login').style.display = 'none';
-            document.getElementById('conteudo-site').style.display = '';
+            document.getElementById('perfil-admin').style.display = 'flex';
             mensagem.classList.add("hidden");
         }, 1000);
     } else {
@@ -95,56 +127,52 @@ function fazerLogin() {
     }
 }
 
-// Função para mostrar tela de cadastro (não implementada)
-function mostrarCadastro() {
-    alert('Tela de cadastro ainda não implementada.');
+function mostrarPedidos() {
+    document.getElementById('perfil-admin').style.display = 'none';
+    document.getElementById('pedido').classList.add('ativa');
 }
-function adicionarCarrinho(botao) {
-    const produtoDiv = botao.closest('.produto');
-    const nomeProduto = produtoDiv.querySelector('h3').textContent.trim();
-    const tamanhoSelect = produtoDiv.querySelector('.tamanho');
-    const tamanho = tamanhoSelect ? tamanhoSelect.value : '';
-    const quantidadeInput = produtoDiv.querySelector('.quantidade');
-    const quantidade = quantidadeInput ? parseInt(quantidadeInput.value) : 1;
-    let preco = precos[nomeProduto];
-    if (typeof preco === 'object') {
-        preco = preco[tamanho];
-    }
-    let existente = carrinho.find(i => i.produto === nomeProduto && i.tamanho === tamanho);
-    if (existente) {
-        existente.quantidade += quantidade;
-    } else {
-        carrinho.push({ produto: nomeProduto, tamanho, quantidade, preco });
-    }
- atualizarCarrinho();
-}
-function atualizarCarrinho() {
-    // Exibe no console (opcional)
-    console.clear();
-    console.log("Carrinho:", carrinho);
 
-    // Exibe na tela
-    const lista = document.getElementById('lista-pedidos');
-    if (!lista) return;
+// ...existing code...
 
-    if (carrinho.length === 0) {
-        lista.innerHTML = "<p>Nenhum pedido adicionado ainda.</p>";
-        return;
-    }
-
-    let html = "<ul>";
-    carrinho.forEach(item => {
-        html += `<li>${item.quantidade}x ${item.produto} (${item.tamanho}) - R$ ${item.preco.toFixed(2)} cada</li>`;
+// Inicialização dos eventos ao carregar a página
+window.onload = () => {
+    // Atualiza todos os preços dos produtos
+    document.querySelectorAll('.produto .tamanho').forEach(select => atualizarPreco(select));
+    // Adiciona eventos aos botões de adicionar ao carrinho
+    document.querySelectorAll('.adicionar-carrinho').forEach(botao => {
+        botao.addEventListener('click', () => adicionarCarrinho(botao));
     });
-    html += "</ul>";
-    lista.innerHTML = html;
-}
-function finalizarPedido() {
-    if (carrinho.length === 0) {
-        alert("Nenhum pedido para finalizar!");
-        return;
-    }
-    alert("Pedido finalizado com sucesso!\nObrigado por comprar na Mamma Mia Pizzaria!");
-    carrinho = [];
+    // Atualiza o carrinho na tela
     atualizarCarrinho();
+};
+function mostrarSabores() {
+    const perfil = document.getElementById('perfil-admin');
+    if (perfil) perfil.style.display = 'none';
+
+    const pedido = document.getElementById('pedido');
+    if (pedido) pedido.classList.add('ativa');
+
+    // Muda o título para "Pedido"
+    const titulo = document.getElementById('titulo-pedido');
+    if (titulo) titulo.textContent = "Pedido";
+}
+
+function mostrarRelatorio() {
+    const perfil = document.getElementById('perfil-admin');
+    if (perfil) perfil.style.display = 'none';
+
+    const pedido = document.getElementById('pedido');
+    if (pedido) pedido.classList.add('ativa');
+
+    // Muda o título para "Pedido"
+    const titulo = document.getElementById('titulo-pedido');
+    if (titulo) titulo.textContent = "Pedido";
+}
+
+function mostrarPedidos() {
+    document.getElementById('perfil-admin').style.display = 'none';
+    document.getElementById('pedido').classList.add('ativa');
+    // Se quiser, pode voltar o título para "Monte o pedido do cliente"
+    const titulo = document.getElementById('titulo-pedido');
+    if (titulo) titulo.textContent = "Monte o pedido do cliente";
 }

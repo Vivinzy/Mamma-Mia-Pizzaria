@@ -45,25 +45,29 @@ h1, h2, h3, p, ul, #lista-pedidos {
     padding: 0;
 }
 
-/* Centraliza botões */
-button {
-    padding: 10px 30px;
-    background: #bc0761;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background 0.2s;
+.menu {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
-
-button:hover {
-    background: #1b3a57;
+.menu button {
+    padding: 12px 24px;
+    margin: 0 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: #cc0000;
+    color: white;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+.menu button:hover {
+    background-color: #b71c1c;
 }
 
 .container {
     background: #fff;
-    max-width: 400px;
+    max-width: 700px;
     margin: 40px auto;
     padding: 32px 24px 24px 24px;
     border-radius: 10px;
@@ -184,4 +188,9 @@ header {
 #titulo-bebidas {
     text-align: center;
     width: 100%;
+}
+button {
+    width: 100px;
+    max-height: 80px;
+    margin: 1px;
 }
