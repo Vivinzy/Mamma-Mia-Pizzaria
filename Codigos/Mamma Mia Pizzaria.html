@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mamma Mia Pizzaria</title>
+    <link rel="stylesheet" href="Mamma Mia Pizzaria.css">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- Tela de Login -->
+    <div id="login-container">
+        <div class="container">
+            <h2>Login</h2>
+            <input type="text" id="usuario" placeholder="Usuário" class="login-input">
+            <input type="password" id="senha" placeholder="Senha" class="login-input">
+            <button onclick="fazerLogin()" class="login-btn">Entrar</button>
+            <p id="login-erro" style="color: red; display: none;">Usuário ou senha incorretos.</p>
+        </div>
+    </div>
+<!-- Painel de cadastro de pizza -->
+<div id="painel-cadastro-pizza">
+    <div class="painel">
+        <h2>Cadastrar Pizza</h2>
+        <input type="text" id="nome-pizza" placeholder="Nome da Pizza">
+        <textarea id="ingredientes-pizza" placeholder="Ingredientes" rows="3"></textarea>
+        <input type="number" id="preco-pizza" placeholder="Preço (R$)" min="0" step="0.01">
+        <button onclick="salvarPizza()">Salvar Pizza</button>
+        <button class="fechar" onclick="fecharPainelCadastro()">Fechar</button>
+        <p id="mensagem-cadastro" style="color: green; display: none;"></p>
+    </div>
+</div>
+    <!-- Conteúdo principal, começa oculto -->
+    <div id="main-content" style="display:none;">
+        <div class="container">
+            <h1>Mamma Mia Pizzaria</h1>
+            <div class="menu">
+                <button onclick="mostrarSecao('cadastro')">
+                    <i class="fas fa-pizza-slice icon"></i>Cadastrar Pizza
+                </button>
+                <button onclick="mostrarSecao('consulta')">
+                    <i class="fas fa-search icon"></i>Consultar Pizzas
+                </button>
+                <button onclick="mostrarSecao('alterar')">
+                    <i class="fas fa-edit icon"></i>Alterar Pizza
+                </button>
+                <button onclick="mostrarSecao('emprestimo')">
+                    <i class="fas fa-motorcycle icon"></i>Entrega da Pizza
+                </button>
+                <button onclick="mostrarSecao('venda')">
+                    <i class="fas fa-cash-register icon"></i>Vendas Presencial 
+                </button>
+                <button onclick="gerarRelatorioVendas()">
+                    <i class="fa-solid fa-flag"></i> Relatório de Vendas
+                </button>
+            </div>
+            <div id="secao-consulta" style="display:none; margin-top:30px;">
+    <h2>Pizzas Cadastradas</h2>
+    <ul id="lista-pizzas"></ul>
+</div>
+<div id="secao-alterar" style="display:none; margin-top:30px;">
+    <h2>Alterar Pizzas</h2>
+    <ul id="lista-alterar-pizzas"></ul>
+</div>
+<div id="secao-entrega" style="display:none; margin-top:30px;">
+    <h2>Entrega de Pizza</h2>
+    <input type="text" id="nome-cliente" placeholder="Nome do Cliente" style="margin-bottom:8px; width: 100%;"><br>
+    <input type="text" id="endereco-cliente" placeholder="Endereço de Entrega" style="margin-bottom:8px; width: 100%;"><br>
+    <label for="pizzas-entrega">Selecione as pizzas:</label>
+    <div id="pizzas-entrega"></div>
+        <select id="forma-pagamento-entrega" style="margin-bottom:8px; width: 100%;">
+    <option value="">Selecione a forma de pagamento</option>
+    <option value="Dinheiro">Dinheiro</option>
+    <option value="Cartão de Crédito">Cartão de Crédito</option>
+    <option value="Cartão de Débito">Cartão de Débito</option>
+    <option value="Pix">Pix</option>
+</select>
+    <button onclick="finalizarEntrega()">Finalizar Entrega</button>
+    <p id="mensagem-entrega"></p>
+</div>
+<div id="secao-venda" style="display:none; margin-top:30px;">
+    <h2>Venda Presencial</h2>
+    <input type="text" id="nome-cliente-venda" placeholder="Nome do Cliente" style="margin-bottom:8px; width: 100%;"><br>
+    <select id="forma-pagamento-venda" style="margin-bottom:8px; width: 100%;">
+        <option value="">Selecione a forma de pagamento</option>
+        <option value="Dinheiro">Dinheiro</option>
+        <option value="Cartão de Crédito">Cartão de Crédito</option>
+        <option value="Cartão de Débito">Cartão de Débito</option>
+        <option value="Pix">Pix</option>
+    </select><br>
+    <label for="pizzas-venda">Selecione as pizzas:</label>
+    <div id="pizzas-venda"></div>
+    <button onclick="finalizarVenda()">Finalizar Venda</button>
+    <p id="mensagem-venda"></p>
+</div>
+<div id="secao-relatorio" style="display:none; margin-top:30px;">
+    <h2>Relatório de Vendas e Entregas</h2>
+    <ul id="lista-relatorio"></ul>
+</div>
+            <div class="perfil-funcionario">
+                <h2>Perfil do Funcionário</h2>
+                <p><strong>Nome:</strong> Administrador do Sistema</p>
+                <p><strong>Cargo:</strong> Gerente</p>
+            </div>
+    <script src="Mamma Mia Pizzaria.js"></script>
+</body>
+</html>
