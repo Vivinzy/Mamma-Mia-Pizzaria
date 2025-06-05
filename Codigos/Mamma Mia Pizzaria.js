@@ -173,7 +173,7 @@ function finalizarVenda() {
     const forma = document.getElementById('forma-pagamento-venda').value;
     const selecionados = Array.from(document.querySelectorAll('.pizza-venda:checked')).map(cb => pizzas[cb.value]);
     const msg = document.getElementById('mensagem-venda');
-    if (!nome || !hora || !forma || selecionados.length === 0) {
+    if (!nome || !forma || selecionados.length === 0) {
         msg.style.display = 'block';
         msg.style.color = 'red';
         msg.textContent = 'Preencha todos os campos e selecione pelo menos uma pizza!';
@@ -188,11 +188,10 @@ function finalizarVenda() {
     });
     msg.style.display = 'block';
     msg.style.color = 'green';
-    msg.textContent = `Venda registrada para ${nome} às ${hora}, pagamento: ${forma}, pizzas: ${selecionados.map(p=>p.nome).join(', ')}.`;
+    msg.textContent = `Venda registrada para ${nome}, pagamento: ${forma}, pizzas: ${selecionados.map(p=>p.nome).join(', ')}.`;
     setTimeout(() => {
         msg.style.display = 'none';
         document.getElementById('nome-cliente-venda').value = '';
-        document.getElementById('hora-pedido-venda').value = '';
         document.getElementById('forma-pagamento-venda').value = '';
         atualizarListaPizzasVenda();
     }, 2500);
